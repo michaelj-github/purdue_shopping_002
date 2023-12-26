@@ -113,8 +113,8 @@ class Product:
                         if choice.lower() == 'x':
                             break
                         if choice.lower() == 'd':
-                            del Product.products[product.id]
                             print(f"\nProduct deleted: {product.name}")
+                            del Product.products[product.id]
                             input("\nEnter to continue: ")
                     return
                 else:

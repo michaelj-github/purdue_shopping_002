@@ -33,8 +33,18 @@ class User:
         os.system('clear')
         print("\nRegistered Users: \n")
         for name in User.users.keys():
-            print(f"User name: {name}, Password: {User.users[name].password}") # for testing only
-            # print(f"User name: {name}")
+            print(f"User name: {name}, Password: {User.users[name].password}, Type: {User.users[name].type}") # for testing only
+            if User.users[name].type != 'admin':
+                keys = list(User.users[name].shopping_cart.keys())
+                for id in keys:
+                    if id not in Product.products.keys():
+                        del User.users[name].shopping_cart[id]
+                print(f"  Shopping cart for {name}:")
+                total = 0
+                for id in User.users[name].shopping_cart.keys():
+                    print(f"    Product ID: #{Product.products[id].id}, {Product.products[id].name}, Quantity: {User.users[name].shopping_cart[id]} at ${Product.products[id].price:.2f}, Subtotal = ${(Product.products[id].price * User.users[name].shopping_cart[id]):.2f}")
+                    total += Product.products[id].price * User.users[name].shopping_cart[id]
+                print(f"\n  Total: ${total:.2f}\n")
         input("\nEnter to continue: ")
 
 class Shopper(User):
@@ -71,6 +81,16 @@ class Shopper(User):
 
     def view_cart(user):
         os.system('clear')
+        # check if a product in the catalog has been removed since the cart was saved
+        keys = list(user.shopping_cart.keys())
+        key_removed = False
+        for id in keys:
+            if id not in Product.products.keys():
+                del user.shopping_cart[id]
+                key_removed = True
+        if key_removed:
+            print("An item has been removed from your cart as it is no longer in the catalog.")
+            input("\nEnter to continue: ")
         if not user.shopping_cart:
             print("\nYour cart is empty.")
             input("\nEnter to continue: ")

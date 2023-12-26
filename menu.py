@@ -116,6 +116,7 @@ def shopper_menu(user):
 User.users['admin'] = Admin('admin', 'password')
 User.users['michael'] = Shopper('michael', 'password')
 User.users['a'] = Admin('a', 'a') # for ease of testing use 'a', 'a'
+User.users['b'] = Shopper('b', 'b') # for ease of testing
 Category.categories[1] = Category('Electronics')
 Category.categories[2] = Category('Clothing')
 Category.categories[3] = Category('Footwear')
