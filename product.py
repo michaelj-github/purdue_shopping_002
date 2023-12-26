@@ -1,4 +1,4 @@
-import os
+from os import system
 
 class Product:
     products = {}
@@ -11,7 +11,7 @@ class Product:
         self.category = category
 
     def view_products():
-        os.system('clear')
+        system('clear')
         print("\nProduct Catalog: \n")
         for id, product in Product.products.items():
             print(f"Product ID: {id}, Description: {product.name}, Price: {product.price:.2f}, Category: {Category.categories[product.category].name}")
@@ -20,7 +20,7 @@ class Product:
     def add_product():
         # select a category first
         # display a list of categories to select from
-        os.system('clear')
+        system('clear')
         print("\nProduct Catagories: \n")
         for id, category in Category.categories.items():
             print(f"Category ID: {id}, Description: {category.name}")
@@ -62,7 +62,7 @@ class Product:
                 print("\nPrice must be a number.")
 
     def update_product():
-        os.system('clear')
+        system('clear')
         print("\nProduct Catalog: \n")
         for id, product in Product.products.items():
             print(f"Product ID: {id}, Description: {product.name}, Price: {product.price:.2f}, Category: {Category.categories[product.category].name}")
@@ -95,7 +95,7 @@ class Product:
                 print("\nPlease select a product from the list or 0 to exit.")
 
     def delete_product():
-        os.system('clear')
+        system('clear')
         print("\nProduct Catalog: \n")
         for id, product in Product.products.items():
             print(f"Product ID: {id}, Description: {product.name}, Price: {product.price:.2f}, Category: {Category.categories[product.category].name}")
@@ -132,14 +132,14 @@ class Category:
         self.name = name
 
     def view_categories():
-        os.system('clear')
+        system('clear')
         print("\nProduct Catagories: \n")
         for id, category in Category.categories.items():
             print(f"Category ID: {id}, Description: {category.name}")
         input("\nEnter to continue: ")
 
     def add_category():
-        os.system('clear')
+        system('clear')
         print("\nAdd a Product Catagory: \n")
         name = ''
         while name.strip() == '':
@@ -154,7 +154,7 @@ class Category:
         input("\nEnter to continue: ")
 
     def delete_category():
-        os.system('clear')
+        system('clear')
         print("\nDelete a Product Catagory: \n")
         for id, category in Category.categories.items():
             print(f"Category ID: {id}, Description: {category.name}")

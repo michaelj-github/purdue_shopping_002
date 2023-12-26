@@ -1,4 +1,4 @@
-import os
+from os import system
 from user import User, Admin, Shopper
 from product import Product, Category
 
@@ -7,7 +7,7 @@ def main_menu():
     Display the main menu
 
     """
-    os.system('clear') # Clear screen for Ubuntu
+    system('clear') # Clear screen for Ubuntu
     print("Initialization in progress ...")
     print("\nAn Admin account has been created.")
     print("Items are being added to the database.")
@@ -20,7 +20,7 @@ def main_menu():
 
     # display the main menu, register, login, or exit
     while True:
-        os.system('clear')
+        system('clear')
         print("\n\nWelcome to the Marketplace")
         print(f"\n1. Login")
         print(f"2. Register")
@@ -36,7 +36,7 @@ def main_menu():
         elif selection == '2':
             User.register()
         elif selection == '3':
-            os.system('clear')
+            system('clear')
             print("\nThank you for using the Marketplace.\n\n")
             break
 
@@ -46,7 +46,7 @@ def admin_menu():
 
     """
     while True:
-        os.system('clear')
+        system('clear')
         print("\nAdmin Menu\n")
         print("1. View Product Catalog")
         print("2. Add New Product")
@@ -86,7 +86,7 @@ def shopper_menu(user):
 
     """
     while True:
-        os.system('clear')
+        system('clear')
         print("\nMenu\n")
         print("1. View Product Catalog")
         print("2. Add an item to your cart")

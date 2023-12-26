@@ -1,4 +1,4 @@
-import os
+from os import system
 from product import Product, Category
 
 class User:
@@ -30,7 +30,7 @@ class User:
         input("\nEnter to continue: ")
 
     def view_users():
-        os.system('clear')
+        system('clear')
         print("\nRegistered Users: \n")
         for name in User.users.keys():
             print(f"User name: {name}, Password: {User.users[name].password}, Type: {User.users[name].type}") # for testing only
@@ -53,7 +53,7 @@ class Shopper(User):
         self.shopping_cart = {}  # Only shoppers have carts
 
     def add_to_cart(user):
-        os.system('clear')
+        system('clear')
         print("\nProduct Catalog: \n")
         for id, product in Product.products.items():
             print(f"Product ID: {id}, Description: {product.name}, Price: {product.price:.2f}, Category: {Category.categories[product.category].name}")
@@ -80,7 +80,7 @@ class Shopper(User):
                 print("\nPlease select a valid number or 0 to exit.")
 
     def view_cart(user):
-        os.system('clear')
+        system('clear')
         # check if a product in the catalog has been removed since the cart was saved
         keys = list(user.shopping_cart.keys())
         key_removed = False
@@ -104,7 +104,7 @@ class Shopper(User):
         input("\nEnter to continue: ")
 
     def adjust_cart(user):
-        os.system('clear')
+        system('clear')
         if not user.shopping_cart:
             print("\nYour cart is empty.")
             input("\nEnter to continue: ")
@@ -136,7 +136,7 @@ class Shopper(User):
                 print("\nPlease select a valid number or 0 to exit.")
 
     def checkout(user):
-        os.system('clear')
+        system('clear')
         if not user.shopping_cart:
             print("\nYour cart is empty.")
             input("\nEnter to continue: ")
