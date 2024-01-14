@@ -140,7 +140,7 @@ class Category:
 
     def add_category():
         system('clear')
-        print("\nAdd a Product Catagory: \n")
+        print("\nAdd a Product Category: \n")
         name = ''
         while name.strip() == '':
             name = input("\nCategory Description: ").strip().capitalize()
@@ -155,7 +155,7 @@ class Category:
 
     def delete_category():
         system('clear')
-        print("\nDelete a Product Catagory: \n")
+        print("\nDelete a Product Category: \n")
         for id, category in Category.categories.items():
             print(f"Category ID: {id}, Description: {category.name}")
         while True:

@@ -24,3 +24,11 @@
 - Deleting a category deletes all products in that category.
 - Shopper can only access the shopper menu.
 - Only a logged in admin can access the admin menu
+
+## Setup and execution
+### Setup - the app is in three modules
+- menu.py
+- user.py
+- product.py
+### Execution
+ - Execute menu.py from a terminal

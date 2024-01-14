@@ -10,7 +10,7 @@ class User:
         self.type = type
 
     def login():
-        name = input(f"\nEnter your name: ")
+        name = input(f"\nEnter your name: ").lower()
         password = input("Enter your password: ")
         if name in User.users.keys() and User.users[name].password == password:
             print(f"\nLogin successful")
@@ -18,11 +18,17 @@ class User:
             return User.users[name]
         else:
             print(f"\nInvalid Credentials")
+            input("\nEnter to continue: ")
 
     def register():
-        name = input(f"\nEnter your name: ")
+        name = input(f"\nEnter your name: ").lower().strip()
+        if len(name) == 0:
+            print("That is an invalid user name.")
+            input("\nEnter to continue: ")
+            return
         if name in User.users.keys():
             print("That name is already registered. Please log in or register with another name.")
+            input("\nEnter to continue: ")
             return
         password = input("Enter your password: ")
         User.users[name] = Shopper(name, password)
@@ -33,13 +39,14 @@ class User:
         system('clear')
         print("\nRegistered Users: \n")
         for name in User.users.keys():
-            print(f"User name: {name}, Password: {User.users[name].password}, Type: {User.users[name].type}") # for testing only
+            # print(f"User name: {name}, Password: {User.users[name].password}, Type: {User.users[name].type}") # for testing
             if User.users[name].type != 'admin':
+                print(f"User name: {name.title()}")
                 keys = list(User.users[name].shopping_cart.keys())
                 for id in keys:
                     if id not in Product.products.keys():
                         del User.users[name].shopping_cart[id]
-                print(f"  Shopping cart for {name}:")
+                print(f"  Shopping cart for {name.title()}:")
                 total = 0
                 for id in User.users[name].shopping_cart.keys():
                     print(f"    Product ID: #{Product.products[id].id}, {Product.products[id].name}, Quantity: {User.users[name].shopping_cart[id]} at ${Product.products[id].price:.2f}, Subtotal = ${(Product.products[id].price * User.users[name].shopping_cart[id]):.2f}")

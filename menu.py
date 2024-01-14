@@ -7,16 +7,17 @@ def main_menu():
     Display the main menu
 
     """
-    system('clear') # Clear screen for Ubuntu
-    print("Initialization in progress ...")
-    print("\nAn Admin account has been created.")
-    print("Items are being added to the database.")
-    for id, category in Category.categories.items():
-        print(f"Category ID: {id}, Description: {category.name}")
-    for id, product in Product.products.items():
-        print(f"Product ID: {id}, Description: {product.name}, Price: {product.price:.2f}, Category: {Category.categories[product.category].name}")
-    print("\n... Initialization completed.")
-    input("\nEnter to continue: ")
+    system('clear') # Clear screen for Ubuntu or Mac, use 'cls' for Windows
+    # for testing:
+    # print("Initialization in progress ...")
+    # print("\nAn Admin account has been created.")
+    # print("Items are being added to the database.")
+    # for id, category in Category.categories.items():
+    #     print(f"Category ID: {id}, Description: {category.name}")
+    # for id, product in Product.products.items():
+    #     print(f"Product ID: {id}, Description: {product.name}, Price: {product.price:.2f}, Category: {Category.categories[product.category].name}")
+    # print("\n... Initialization completed.")
+    # input("\nEnter to continue: ")
 
     # display the main menu, register, login, or exit
     while True:
@@ -113,10 +114,8 @@ def shopper_menu(user):
 
 
 # initialize starting data items for admin, categories, and products
-User.users['admin'] = Admin('admin', 'password')
-User.users['michael'] = Shopper('michael', 'password')
-User.users['a'] = Admin('a', 'a') # for ease of testing use 'a', 'a'
-User.users['b'] = Shopper('b', 'b') # for ease of testing
+User.users['admin'] = Admin('admin', 'password') # The admin account is included by default. Shoppers must register for an account.
+User.users['michael'] = Shopper('michael', 'password') # for testing
 Category.categories[1] = Category('Electronics')
 Category.categories[2] = Category('Clothing')
 Category.categories[3] = Category('Footwear')
